@@ -1,6 +1,8 @@
 package com.bookchigo.domain;
 
-public class SellItem {
+import java.io.Serializable;
+
+public class SellItem implements Serializable {
 	private int sell_itemId;
 	private String sell_itemName;
 	private int sell_price;
@@ -10,11 +12,18 @@ public class SellItem {
 	private String sell_image; 
 	private String deal_method; 
 	private int deal_status; 
+	private String account;
 	//Member 클래스 필드
 	private int memberId; //판매자의 아이디
 	private String name; //판매자 이름
 	private int tradeCount; //판매자의 판매거래 횟수
 	
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
 	public int getSell_itemId() {
 		return sell_itemId;
 	}
@@ -86,6 +95,12 @@ public class SellItem {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "SellItem [sell_itemName=" + sell_itemName + ", sell_price=" + sell_price + ", sell_author="
+				+ sell_author + ", sell_publisher=" + sell_publisher + ", sell_info=" + sell_info + ", sell_image="
+				+ sell_image + ", deal_method=" + deal_method + ", memberId=" + memberId + "]";
 	}
 
 }

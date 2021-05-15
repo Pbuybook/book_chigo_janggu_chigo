@@ -1,0 +1,47 @@
+@import url(http://fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+@charset "UTF-8";
+* {
+	font-family: 'Jeju Myeongjo', sans-serif;
+	margin-left: auto; margin-right: auto;
+}
+
+table.slist {
+	width: 80%;
+    text-align:center;
+}
+table.slist td {
+    padding: 30px;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+table.shistory {
+	width : 80%;
+	text-align:center;
+}
+
+table.shistory td {
+	border: 1px solid #f6f6f6;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+#sell_search_box {
+   	width: 300px;
+    height: 28px;
+    border: 1px solid #DDDDDD;
+    font-size: 17px;
+    padding: 10px;
+}
+
+.btn_slist{
+    width: 100px;
+    height: 30px;
+    border: 1px solid #DDDDDD;
+    font-size: 16px;
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 700; 
+    background-color: #DDDDDD;
+    color: #424242;
+    border-radius : 1px;
+}

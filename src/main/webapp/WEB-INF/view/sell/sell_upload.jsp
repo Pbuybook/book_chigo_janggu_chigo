@@ -5,14 +5,14 @@
 <div align = "center">
 <br>
 <!-- write Form  -->
-	<form name="form" method="POST" action="<c:url value='sell_list.jsp' />">
+	<form name="form" method="POST" action="<c:url value='/sell/upload.do' />">
 	        <!--contents-->
 		<h3>판매 등록</h3> 
 		  <table>
 		  	  <tr >
 				<td width="100" align="center">상품 이름</td>
 				<td bgcolor="ffffff" style="padding-left: 10; padding-right : 10;">
-					<input type="text" style="font-family: 'Nanum Gothic', sans-serif; width: 250;" name="sell_itemId" required="required">
+					<input type="text" style="font-family: 'Nanum Gothic', sans-serif; width: 250;" name="sell_itemName" required="required">
 				</td>
 			  </tr>
 		  	  <tr>
@@ -54,7 +54,7 @@
 			  </table>
 			  <br>
 	 		<input class="btn_slist" type="submit" value = "등록"> &nbsp;
-	 		<input class="btn_slist" type="button" value = "취소" onclick="location.href='<c:url value='sell_list.jsp'/>'">	
+	 		<input class="btn_slist" type="button" value = "취소" onclick="location.href='<c:url value='/sell/list.do'/>'">	
 	 	
 	</form>
 </div>

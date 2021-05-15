@@ -4,14 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bookchigo.dao.SellDao;
 import com.bookchigo.domain.SellItem;
 import com.bookchigo.domain.Wishlist;
 import com.bookchigo.domain.BuyFin;
 
-@Service("sellServiceImpl")
-public class SellServiceImpl implements SellService {
+@Service
+@Transactional
+public class SellServiceImpl implements SellServiceFacade {
 	@Autowired
 	private SellDao sellDao;
 	
@@ -19,8 +21,16 @@ public class SellServiceImpl implements SellService {
 		return sellDao.getSellList();
 	}
 	
-	public List<SellItem> getSellByItemId(int itemId) {
+	public SellItem getSellByItemId(int itemId) {
 		return sellDao.getSellByItemId(itemId);
+	}
+	
+	public int getCountbyId(int memberId) {
+		return sellDao.getCountbyId(memberId);
+	}
+	
+	public int getMemberIdbyItemId(int itemId) {
+		return sellDao.getMemberIdbyItemId(itemId);
 	}
 	
 	public List<SellItem> getSellListByItemName(String itemName) {
@@ -73,6 +83,16 @@ public class SellServiceImpl implements SellService {
 	
 	public List<BuyFin> selectBuyFin(int memberId) {
 		return sellDao.selectBuyFin(memberId);
+	}
+
+	@Override
+	public void updateCountMinus(int memberId) {
+		sellDao.updateCountMinus(memberId);
+	}
+
+	@Override
+	public void updateCountPlus(int memberId) {
+		sellDao.updateCountPlus(memberId);
 	}
 	
 }

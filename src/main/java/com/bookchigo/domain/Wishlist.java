@@ -1,6 +1,8 @@
 package com.bookchigo.domain;
 
-public class Wishlist {
+import java.io.Serializable;
+
+public class Wishlist implements Serializable {
 	private int wish_id; //즐겨찾기 ID
 	private int memberId; //구매자 아이디
 	private int sell_itemId;
@@ -8,6 +10,7 @@ public class Wishlist {
 	private int sell_price;
 	private String sell_image; 
 	private int deal_status; 
+	private String account;
 	
 	public int getWish_id() {
 		return wish_id;
@@ -50,6 +53,12 @@ public class Wishlist {
 	}
 	public void setDeal_status(int deal_status) {
 		this.deal_status = deal_status;
+	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
 	}
 	
 }

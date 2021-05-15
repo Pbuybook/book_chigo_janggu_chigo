@@ -6,6 +6,7 @@
 	<title>Welcome</title>
 </head>
 <body>
-	
+	<a href="<c:url value="/sell/list.do" />">
+          <img border="0" src="images/logo-topbar.gif" /></a>
 </body>
 </html>

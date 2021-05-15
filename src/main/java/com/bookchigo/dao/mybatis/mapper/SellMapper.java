@@ -2,19 +2,27 @@ package com.bookchigo.dao.mybatis.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.bookchigo.domain.SellItem;
 import com.bookchigo.domain.Wishlist;
 import com.bookchigo.domain.BuyFin;
 
+@Mapper
 public interface SellMapper {
 	List<SellItem> getSellList();
-	List<SellItem> getSellByItemId(int itemId);
+	SellItem getSellByItemId(int itemId);
+	int getMemberIdbyItemId(int itemId);
 	List<SellItem> getSellListByItemName(String itemName);
 	List<SellItem> getSellListByMemberId(int memberId);
 	
+	String getAccountByMemberId(int memberId);
 	int getDealStatus(int itemId);
 	int getMemberIdBySell(int itemId);
 	int getMemberIdbyId(String id);
+	String getNamebyId(int memberId);
+	int getCountbyId(int memberId);
+	void updateName(SellItem item);
 	
 	List<Wishlist> selectWishlist(int memberId);
 	List<BuyFin> selectBuyFin(int memberId);
