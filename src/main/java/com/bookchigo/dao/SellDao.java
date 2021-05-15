@@ -16,6 +16,8 @@ public interface SellDao {
 	List<SellItem> getSellListByItemName(String itemName) throws DataAccessException;
 	List<SellItem> getSellListByMemberId(int memberId) throws DataAccessException;
 	void insertSellItem(SellItem item) throws DataAccessException;
+	void updateCountMinus(int memberId) throws DataAccessException;
+	void updateCountPlus(int memberId) throws DataAccessException;
 	void updateSellItem(SellItem item) throws DataAccessException;
 	void deleteSellItem(int itemId) throws DataAccessException;
 	void updateDealStatus(SellItem item) throws DataAccessException;

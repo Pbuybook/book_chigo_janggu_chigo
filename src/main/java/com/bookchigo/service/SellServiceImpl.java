@@ -84,5 +84,15 @@ public class SellServiceImpl implements SellServiceFacade {
 	public List<BuyFin> selectBuyFin(int memberId) {
 		return sellDao.selectBuyFin(memberId);
 	}
+
+	@Override
+	public void updateCountMinus(int memberId) {
+		sellDao.updateCountMinus(memberId);
+	}
+
+	@Override
+	public void updateCountPlus(int memberId) {
+		sellDao.updateCountPlus(memberId);
+	}
 	
 }

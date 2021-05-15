@@ -41,7 +41,7 @@
   
   <insert id="insertSellItem" parameterType="SellItem"> <!-- 판매글 등록, sell_itemId는 oracle에서 sequence 설정해서 1부터 증가시키는 방식으로 사용 -->
   	<selectKey keyProperty="sell_itemId" resultType="int" order="BEFORE">	
-		select auto_increment.nextval FROM DUAL 
+		select auto_increment_sell.nextval FROM DUAL 
 	</selectKey>
   	
   	INSERT INTO SELLITEM 
@@ -50,7 +50,7 @@
   		(#{sell_itemId}, #{sell_itemName}, #{sell_price}, #{sell_author}, #{sell_publisher}, #{sell_info}, #{sell_image}, #{deal_method}, 0, #{memberId}, #{account})
   </insert>
   
-  <select id="getNamebyId" resultType="int"> <!-- memberId로 이름 구하기 -->
+  <select id="getNamebyId" resultType="String"> <!-- memberId로 이름 구하기 -->
   	SELECT name
   	FROM MEMBER
   	WHERE memberId = #{value}
@@ -69,7 +69,7 @@
   </update>
   
   <update id="updateCountPlus" parameterType="int"> <!-- 판매글 등록의 연장선, tradeCount 증가 -->
-  	UPDATE SELLITEM SET
+  	UPDATE MEMBER SET
   		tradeCount = tradeCount + 1
   	WHERE memberId = #{value}
   </update>
@@ -83,7 +83,7 @@
   		sell_info = #{sell_info},
   		sell_image = #{sell_image},
   		deal_method = #{deal_method}
-  	WHERE sell_itemid = #{sell_itemId} and memberId={memberId}
+  	WHERE sell_itemid = #{sell_itemId} and memberId=#{memberId}
   </update>
   
   <select id="getMemberIdBySell" resultType="int"> <!-- memberId 구하기 for 판매글 삭제에 의한 tradeCount 감소 -->
@@ -98,7 +98,7 @@
   </delete>
   
   <update id="updateCountMinus" parameterType="int"> <!-- 판매글 삭제의 연장선, tradeCount 감소 -->
-  	UPDATE SELLITEM SET
+  	UPDATE MEMBER SET
   		tradeCount = tradeCount - 1
   	WHERE memberId = #{value}
   </update>
@@ -118,13 +118,13 @@
   
   <insert id="insertWishlist" parameterType="Wishlist"> <!-- 즐겨찾기 등록, wish_id는 oracle에서 sequence 설정해서 1부터 증가시키는 방식으로 사용 -->
   	<selectKey keyProperty="wish_id" resultType="int" order="BEFORE">	
-		select auto_increment.nextval FROM DUAL 
+		select auto_increment_wish.nextval FROM DUAL 
 	</selectKey>
   	
   	INSERT INTO WISHLIST
   		(wish_id, memberId, sell_itemId, sell_itemName, sell_price, sell_image, deal_status, account)
   	VALUES
-  		(#{wish_id}, #{memberId}, #{sell_itemId}, #{sell_itemName}, #{sell_price}, #{sell_image}, #{account})
+  		(#{wish_id}, #{memberId}, #{sell_itemId}, #{sell_itemName}, #{sell_price}, #{sell_image}, #{deal_status}, #{account})
   </insert>
   
   <select id="selectWishlist" resultType="Wishlist"> <!-- 즐겨찾기 조회 -->
@@ -145,14 +145,14 @@
   </select>
 
   <insert id="insertBuyFin" parameterType="BuyFin">  <!-- 주문 완료 아이템 등록, sellfin_id는 oracle에서 sequence 설정해서 1부터 증가시키는 방식으로 사용 -->
-  	<selectKey keyProperty="getSeq" resultType="int" order="BEFORE">	
-		select auto_increment.nextval FROM DUAL 
+  	<selectKey keyProperty="sellfin_id" resultType="int" order="BEFORE">	
+		select auto_increment_buy.nextval FROM DUAL 
 	</selectKey>
   	
   	INSERT INTO BUYFIN
   		(sellfin_id, memberId, sell_itemId, sell_itemName, sell_price, sell_image, deal_method, account)
   	VALUES
-  		(#{getSeq}, #{memberId}, #{sell_itemId}, #{sell_itemName}, #{sell_price}, #{sell_image}, #{deal_method}, #{account})
+  		(#{sellfin_id}, #{memberId}, #{sell_itemId}, #{sell_itemName}, #{sell_price}, #{sell_image}, #{deal_method}, #{account})
   </insert>
   
   <select id="selectBuyFin" resultType="BuyFin"> <!-- 주문 완료 아이템 조회 -->

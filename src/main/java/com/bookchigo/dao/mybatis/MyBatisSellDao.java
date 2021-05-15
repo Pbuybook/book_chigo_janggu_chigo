@@ -49,8 +49,10 @@ public class MyBatisSellDao implements SellDao {
 		String name = sellMapper.getNamebyId(item.getMemberId());
 		item.setName(name);
 		sellMapper.updateName(item);
-		
-		sellMapper.updateCountPlus(item.getMemberId());
+	}
+	
+	public void updateCountPlus(int memberId) throws DataAccessException {
+		sellMapper.updateCountPlus(memberId);
 	}
 	
 	public void updateSellItem(SellItem item) throws DataAccessException {
@@ -60,7 +62,10 @@ public class MyBatisSellDao implements SellDao {
 	public void deleteSellItem(int itemId) throws DataAccessException {
 		int memId = sellMapper.getMemberIdBySell(itemId);
 		sellMapper.deleteSellItem(itemId);
-		sellMapper.updateCountMinus(memId);
+	}
+	
+	public void updateCountMinus(int memberId) throws DataAccessException {
+		sellMapper.updateCountMinus(memberId);
 	}
 	
 	public void updateDealStatus(SellItem item) throws DataAccessException { 

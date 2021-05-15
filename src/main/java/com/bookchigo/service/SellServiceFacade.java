@@ -14,6 +14,8 @@ public interface SellServiceFacade {
 	public List<SellItem> getSellListByItemName(String itemName);
 	public List<SellItem> getSellListByMemberId(int memberId);
 	public void insertSellItem(SellItem item);
+	public void updateCountMinus(int memberId);
+	public void updateCountPlus(int memberId);
 	public void updateSellItem(SellItem item);
 	public void deleteSellItem(int itemId);
 	public void updateDealStatus(SellItem item);

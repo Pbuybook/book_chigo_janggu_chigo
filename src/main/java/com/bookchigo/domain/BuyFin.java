@@ -60,4 +60,10 @@ public class BuyFin implements Serializable {
 	public void setAccount(String account) {
 		this.account = account;
 	}
+	@Override
+	public String toString() {
+		return "BuyFin [sellfin_id=" + sellfin_id + ", memberId=" + memberId + ", sell_itemId=" + sell_itemId
+				+ ", sell_itemName=" + sell_itemName + ", sell_price=" + sell_price + ", sell_image=" + sell_image
+				+ ", deal_method=" + deal_method + ", account=" + account + "]";
+	}
 }

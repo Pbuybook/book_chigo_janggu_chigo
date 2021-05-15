@@ -24,7 +24,7 @@
 		<property name="url"
 			value="jdbc:oracle:thin:@202.20.119.117:1521:orcl" />
 		<property name="username" value="sd0208" />
-		<property name="password" value="sd0208" />
+		<property name="password" value="bookchigo" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

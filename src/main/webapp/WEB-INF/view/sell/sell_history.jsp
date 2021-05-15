@@ -12,20 +12,21 @@
 			<th>가격</th>
 			<th>거래 상태</th>
 		</tr>
-		<tr>
-			<td>1</td>
-			<td><a href='sell_seller.jsp'><img border="0" src="../../images/book_example.jpg" width="100px" /></a></td>
-			<td>모두의 딥러닝</td>
-			<td>10,000원</td>
-			<td>판매 중</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td><a href='sell_seller.jsp'><img border="0" src="../../images/book_example.jpg" width="100px" /></a></td>
-			<td>모두의 딥러닝</td>
-			<td>10,000원</td>
-			<td>거래 완료</td>
-		</tr>
+		<c:forEach var="sellItem" items="${list}" varStatus="vs">	
+			<tr>
+				<td><c:out value="${vs.count}" /></td>
+				<td><a href='<c:url value="/sell/seller.do"> <c:param name="sell_itemId" value="${sellItem.sell_itemId}"/></c:url>'>
+						<img border="0" src="${sellItem.sell_image}" /></a></td>
+				<td>${sellItem.sell_itemName}</td>
+				<td>${sellItem.sell_price}</td>
+				<td><c:choose>
+					<c:when test="${sellItem.deal_status eq 0}">판매 중</c:when>
+					<c:when test="${sellItem.deal_status eq 1}">거래 중</c:when>
+					<c:when test="${sellItem.deal_status eq 2}">판매 완료</c:when>
+				</c:choose>
+				</td>
+			</tr>
+		</c:forEach>
 	</table>
 </div>
 
